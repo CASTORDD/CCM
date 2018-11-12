@@ -25,4 +25,12 @@ class Consult extends Model
     	'observations',
     	'assistance',
     ];
+
+    public function patient(){    	
+    	return $this->belongsTo(Patient::class);
+    }
+
+    public function appointment(){
+    	return $this->belongsTo(Appointment::class);
+    }
 }
