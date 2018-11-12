@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Patient extends Migration
+class CreatePatientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -21,7 +21,7 @@ class Patient extends Migration
             $table->string('birthday');
             $table->string('blood');
             $table->string('identification');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('relative');
             $table->string('relative_phone');
             $table->string('relative_email');
