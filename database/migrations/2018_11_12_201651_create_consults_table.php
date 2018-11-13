@@ -31,8 +31,13 @@ class CreateConsultsTable extends Migration
             $table->string('assistance');
             $table->timestamps();
 
-            $table->foreign('patient_id')->references('id')->on('patients');
-            $table->foreign('appointment_id')->references('id')->on('appointments');
+            $table->foreign('patient_id')->references('id')->on('patients')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+
+            $table->foreign('appointment_id')->references('id')->on('appointments')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
         });
     }
 

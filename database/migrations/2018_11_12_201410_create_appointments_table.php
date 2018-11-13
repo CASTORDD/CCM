@@ -23,8 +23,13 @@ class CreateAppointmentsTable extends Migration
             $table->string('plano');
             $table->timestamps();
 
-            $table->foreign('patient_id')->references('id')->on('patients');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('patient_id')->references('id')->on('patients')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+
+            $table->foreign('user_id')->references('id')->on('users')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
         });
     }
 

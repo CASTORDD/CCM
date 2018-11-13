@@ -2,8 +2,6 @@
 
 namespace App;
 
-use App\Appointment;
-use App\Consult;
 use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model
@@ -23,10 +21,8 @@ class Patient extends Model
     	'telephone2',
     	'address',
     	'ocupation',
-    	'patient_id',
     	'ant_personal',
     	'ant_family',
-    	'alergy',
     	'vacunas',
     	'tratamiento',
     	'cirugias',
@@ -39,5 +35,9 @@ class Patient extends Model
 
     public function consults(){
     	return $this->hasMany(Consult::class);
+    }
+
+    public function alergies(){
+        return $this->belongsToMany(Alergy::class);
     }
 }

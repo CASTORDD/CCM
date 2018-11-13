@@ -4,9 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use App\Patient;
-use App\Appointment;
-
 class Consult extends Model
 {
     protected $fillable = [

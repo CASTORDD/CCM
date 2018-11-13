@@ -29,10 +29,8 @@ class CreatePatientsTable extends Migration
             $table->string('telephone2');
             $table->string('address');
             $table->string('ocupation');
-            $table->string('patient_id');
             $table->string('ant_personal');
             $table->string('ant_family');
-            $table->string('alergy');
             $table->string('vacunas');
             $table->string('tratamiento');
             $table->string('cirugias');
