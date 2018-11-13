@@ -62,7 +62,19 @@
                       <div class="menu_section">
                         <h3>General</h3>
                         <ul class="nav side-menu">
-                          <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                          <li>
+                            <a href="{{ route('dashboard.index')}}">
+                              <i class="fa fa-tachometer"></i> Dashboard
+                            </a>
+                          </li>
+                          <li>
+                            <a><i class="fa fa-user"></i> Paciente <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                              <li><a href="index.html">listado</a></li>
+                              <li><a href="index2.html">Registro</a></li>
+                            </ul>
+                          </li>
+                          <li><a><i class="fa fa-tachometer"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                               <li><a href="index.html">Dashboard</a></li>
                               <li><a href="index2.html">Dashboard2</a></li>
@@ -219,6 +231,9 @@
                                         <i class="fa fa-sign-out pull-right"></i> 
                                         Log Out
                                     </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                 </li>
                               </ul>
                             </li>
@@ -234,11 +249,14 @@
             <!-- footer content -->
             <footer>
               <div class="pull-right">
-                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                CCM by <a href="#">vort</a>
               </div>
               <div class="clearfix"></div>
             </footer>
         </div>
     </div>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/custom.min.js') }}"></script>
 </body>
 </html>
