@@ -20,4 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::resource('/dashboard', 'Dashboard\DashboardController');
+Route::group(['middleware' => 'auth'], function () {
+	Route::resource('dashboard', 'Dashboard\DashboardController');
+	Route::resource('pacientes', 'Patient\PatientController');
+});
+
