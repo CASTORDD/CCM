@@ -8,11 +8,12 @@ class Appointment extends Model
 {
     protected $fillable =[
     	'patient_id',
+        'title', // patient Name
     	'doctor',
     	'date',
     	'reason',
     	'user_id',
-    	'plano',
+    	'plan',
     ];
 
     public function patient(){
@@ -21,5 +22,14 @@ class Appointment extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    // Query scope
+    public function scopeMyConsults($query, $date)
+    {
+        if($date){
+            return $query->where('date', 'LIKE', "%$date%");
+        }
+
     }
 }

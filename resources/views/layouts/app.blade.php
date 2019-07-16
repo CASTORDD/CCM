@@ -20,6 +20,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/them/dist/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css')}}">
+    @yield('css')
     <link rel="stylesheet" href="{{ asset('css/them/custom.css')}}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -64,15 +65,28 @@
                         <ul class="nav side-menu">
                           <li>
                             <a href="{{ route('dashboard.index')}}">
-                              <i class="fa fa-tachometer"></i> Dashboard
+                              <i class="fa fa-th"></i> Dashboard
                             </a>
                           </li>
                           <li>
                             <a><i class="fa fa-user"></i> Paciente <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                               <li><a href="/pacientes">listado</a></li>
-                              <li><a href="index2.html">Registro</a></li>
+                              <li><a href="/pacientes/create">Registro</a></li>
                             </ul>
+                          </li>
+                          <li>
+                            <a><i class="fa fa-calendar"></i> Cita <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                              <li><a href="/citas">listado</a></li>
+                              <li><a href="/citas/create">Registro</a></li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="/medicos"><i class="fa fa-user-md"></i> Medicos</a>
+                          </li>
+                          <li>
+                            <a href="/mis-consultas/{{ auth()->user()->id }}?date={{ date('Y-m-d')}}"><i class="fa fa-user-md"></i> Mis consultas</a>
                           </li>
                         </ul>
                       </div>

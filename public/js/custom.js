@@ -1680,7 +1680,7 @@ if (typeof NProgress != 'undefined') {
 				  buttonClasses: ['btn btn-default'],
 				  applyClass: 'btn-small btn-primary',
 				  cancelClass: 'btn-small',
-				  format: 'MM/DD/YYYY',
+				  format: 'YYYY/MM/DD',
 				  separator: ' to ',
 				  locale: {
 					applyLabel: 'Submit',
@@ -1750,7 +1750,10 @@ if (typeof NProgress != 'undefined') {
 			});
 			$('#single_cal4').daterangepicker({
 			  singleDatePicker: true,
-			  singleClasses: "picker_4"
+			  singleClasses: "picker_4",
+			  locale:{
+			  	format:'YYYY-MM-DD',
+			  }
 			}, function(start, end, label) {
 			  console.log(start.toISOString(), end.toISOString(), label);
 			});
@@ -2391,7 +2394,19 @@ if (typeof NProgress != 'undefined') {
 					started,
 					categoryClass;
 
-				var calendar = $('#calendar').fullCalendar({
+				var getUrl = window.location.pathname.split('/');
+				var getID = getUrl[3]
+				console.log(getID);
+				function getRoute(){
+					if(!getID){
+						return '/citas/get';
+					} else {
+						return '/citas/medic/' + getID + '/get';
+					}
+				}
+				console.log(getRoute());
+
+				var calendar = $('#calendar2').fullCalendar({
 				  header: {
 					left: 'prev,next today',
 					center: 'title',
@@ -2405,33 +2420,10 @@ if (typeof NProgress != 'undefined') {
 					started = start;
 					ended = end;
 
-					$(".antosubmit").on("click", function() {
-					  var title = $("#title").val();
-					  if (end) {
-						ended = end;
-					  }
-
-					  categoryClass = $("#event_type").val();
-
-					  if (title) {
-						calendar.fullCalendar('renderEvent', {
-							title: title,
-							start: started,
-							end: end,
-							allDay: allDay
-						  },
-						  true // make the event "stick"
-						);
-					  }
-
-					  $('#title').val('');
-
-					  calendar.fullCalendar('unselect');
-
-					  $('.antoclose').click();
-
-					  return false;
-					});
+				  },
+				  dayClick: function(date, jsEvent, view) {
+				  	$('#date').val(date.format());
+				  	$('#doctor').val(getID);
 				  },
 				  eventClick: function(calEvent, jsEvent, view) {
 					$('#fc_edit').click();
@@ -2448,34 +2440,15 @@ if (typeof NProgress != 'undefined') {
 
 					calendar.fullCalendar('unselect');
 				  },
-				  editable: true,
-				  events: [{
-					title: 'All Day Event',
-					start: new Date(y, m, 1)
-				  }, {
-					title: 'Long Event',
-					start: new Date(y, m, d - 5),
-					end: new Date(y, m, d - 2)
-				  }, {
-					title: 'Meeting',
-					start: new Date(y, m, d, 10, 30),
-					allDay: false
-				  }, {
-					title: 'Lunch',
-					start: new Date(y, m, d + 14, 12, 0),
-					end: new Date(y, m, d, 14, 0),
-					allDay: false
-				  }, {
-					title: 'Birthday Party',
-					start: new Date(y, m, d + 1, 19, 0),
-					end: new Date(y, m, d + 1, 22, 30),
-					allDay: false
-				  }, {
-					title: 'Click for Google',
-					start: new Date(y, m, 28),
-					end: new Date(y, m, 29),
-					url: 'http://google.com/'
-				  }]
+				  editable: false,
+				  
+				events: getRoute(),
+				eventLimit: true,
+				views: {
+				    agenda: {
+				      eventLimit: 6 // adjust to 6 only for agendaWeek/agendaDay
+				    }
+				}
 				});
 				
 			};

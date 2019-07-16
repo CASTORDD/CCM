@@ -4253,3 +4253,65 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     background-color: #ffff !important;
 }
 /** /bootstrap-datetimepicker **/
+
+ul.medics {
+    list-style: none;
+    padding: 0;
+}
+ul.medics li {
+
+}
+ul.medics li:hover, ul.medics li.active {
+    background-color: #f1f1f1;
+}
+ul.medics li a {
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0;
+}
+ul.medics li a img {
+    width: 30px;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+ul.medics li a span {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#patientList {
+    width: 300px;
+    list-style: none;
+}
+#patientList li {
+    padding: 5px 10px;
+}
+#patientList li + li {
+    border-top: 1px solid #f1f1f1;
+}
+#patientList li span:first-child {
+    display: none;
+}
+#patientList li:hover {
+    background-color: #f1f1f1;
+}
+
+.avatar-view {
+    width: 70%;
+    max-width: 180px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+ul.consults {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ul.consults li a {
+    padding: 10px 20px;
+}
+ul.consults li:hover a.x_panel {
+    color: #f1f1f1;
+    background: #2A3F54;
+}

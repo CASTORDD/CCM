@@ -75,11 +75,12 @@ $factory->define(App\Patient::class, function (Faker $faker){
 $factory->define(App\Appointment::class, function (Faker $faker){
 	return [
 		'patient_id' => Patient::inRandomOrder()->first()->id,
-		'doctor'     => $faker->name,
-		'date'       => $faker->dateTime($max = 'now', $timezone = null),
+		'title'      => $faker->name,
+		'doctor'     => User::where('activity', 'MEDIC')->inRandomOrder()->first()->id,
+		'date'       => $faker->dateTimeBetween($startDate = '-5 month', $endDate = 'now', $timezone = null),
 		'reason'     => $faker->text($maxNbChars = 150),
 		'user_id'    => User::inRandomOrder()->first()->id,
-		'plano'      => $faker->state,
+		'plan'      => $faker->state,
 	];
 });
 
